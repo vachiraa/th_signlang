@@ -52,7 +52,7 @@ class VideoWidgetState extends State<VideoWidget> {
 
   @override
   Widget build(BuildContext context) => AspectRatio(
-    aspectRatio: 16/9,
+    aspectRatio: 9/16,
     child: _controller.value.initialized ? videoPlayer() : Container(),
   );
 

@@ -16,75 +16,82 @@ class HomePageState extends State<HomePage> {
   // File fileMedia;
   // MediaSource source;
   File videoFile;
+
   // VideoPlayerController controller = VideoPlayerController();
 
   @override
   Widget build(BuildContext context) {
     // double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Color.fromRGBO(54, 54, 54, 100),
       body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.white, Colors.orangeAccent,Color.fromRGBO(251, 188, 27, 100)],
-          begin: Alignment.topCenter,end: Alignment.bottomCenter)),
-          child: Center(
-            // height: screenHeight / 3,
-
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        child: Center(
+          // decoration: BoxDecoration(gradient: LinearGradient(colors: [Color.fromRGBO(54, 54, 54, 100)],
+          // begin: Alignment.topCenter,end: Alignment.bottomCenter)),
+          child: Column(
               children: <Widget>[
+
                 ClipRRect(
-                  child: Image.asset(
-                    'lib/assets/logo3.jpeg',
-                    width: 200.0,
-                    height: 200.0,
+                    child: Image.asset(
+                      'lib/assets/logo04.jpeg',
+                      width: 180.0,
+                      height: 180.0,
+                    ),
+                    borderRadius: BorderRadius.circular(35.0),
                   ),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                const SizedBox(height: 24),
-                RaisedButton(
-                  child: Text(
-                    'Camera',
-                  ),
-                  shape: StadiumBorder(),
-                  // onPressed: () => videoMedia(context),
-                  onPressed: (){videoMedia();},
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
-                ),
-                const SizedBox(height: 12),
-                RaisedButton(
-                  child: Text('Gallery'),
-                  shape: StadiumBorder(),
-                  // onPressed: () => pickGalleryMedia(context),
-                  onPressed: (){galleryMedia();},
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
-                ),
+                Container(
+                  child: Text('THAI SIGN LANGUAGE TRANSLATION',
+                    style: TextStyle(color: Colors.white),),),
+                Container(
+                  child: RaisedButton(
+                      child: Text('Camera',),
+                    shape: StadiumBorder(),
+                    onPressed: () {
+                      videoMedia();
+                    },
+                    color: Theme.of(context).primaryColor,
+                    textColor: Colors.white,
+                  ),),
+                Container(
+                  child: RaisedButton(
+                    child: Text('Gallery'),
+                    shape: StadiumBorder(),
+                    onPressed: () {
+                      galleryMedia();
+                    },
+                    color: Theme
+                        .of(context)
+                        .primaryColor,
+                    textColor: Colors.white,
+                  ),),
               ],
-            ),
+          ),
           ),
         ),
-      ),
-    );
+      );
   }
 
-  Future videoMedia()async{
-    final getVideo = await ImagePicker.pickVideo(source: ImageSource.camera); // final getMedia = ImagePicker().getVideo;
+  Future videoMedia() async {
+    final getVideo = await ImagePicker.pickVideo(
+        source: ImageSource.camera); // final getMedia = ImagePicker().getVideo;
 
-    if(getVideo != null){
+    if (getVideo != null) {
       setState(() {
         videoFile = getVideo;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProcessingPage(videoFile: videoFile)));
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ProcessingPage(videoFile: videoFile)));
       });
     }
   }
-  Future galleryMedia()async{
+
+  Future galleryMedia() async {
     File getVideo = await ImagePicker.pickVideo(source: ImageSource.gallery);
 
-    if(getVideo != null){
+    if (getVideo != null) {
       setState(() {
         videoFile = getVideo;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProcessingPage(videoFile: videoFile,)));
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ProcessingPage(videoFile: videoFile,)));
       });
     }
   }

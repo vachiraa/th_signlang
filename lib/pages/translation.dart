@@ -15,21 +15,25 @@ class _TranslationPageState extends State<TranslationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(54, 54, 54, 100),
       appBar: AppBar(
         title: Text('Translation'),
+        // backgroundColor: Color.fromRGBO(251, 188, 27, 100),
       ),
       body: SafeArea(
         child: Center(
           child: ListView(
             children: <Widget> [
               Container(
+
                 child: Padding(
                   padding: EdgeInsets.all(10.0),
                 child: widget.videoFile == null ? Icon(Icons.video_collection,size: 120,)
                 :VideoWidget((widget.videoFile)),
     ) ),
               Container(
-                child: Text('คำแปล'),
+
+                child: Text('hihihihi'),
               )
             ],
           ),
