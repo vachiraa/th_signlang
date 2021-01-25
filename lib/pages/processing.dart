@@ -8,8 +8,9 @@ import 'package:th_signlang/widget/video_widget.dart';
 
 class ProcessingPage extends StatefulWidget {
   final File videoFile;
+  final bool looping;
 
-  ProcessingPage({Key key, this.videoFile}) : super(key: key);
+  ProcessingPage({Key key, this.videoFile,this.looping}) : super(key: key);
 
   @override
   _ProcessingPageState createState() => _ProcessingPageState();
@@ -23,38 +24,40 @@ class _ProcessingPageState extends State<ProcessingPage> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(54, 54, 54, 100),
       appBar: AppBar(
-        title: Text('Processing '),
+        centerTitle: true,
+          title: Text('Processing '),
+        automaticallyImplyLeading: true,
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+        },
+        ),
         // backgroundColor: Color.fromRGBO(251, 188, 27, 100),
       ),
       body: SafeArea(
           child: Center(
               child: ListView(
-        children: <Widget>[
-          Container(
-            color: Colors.grey,
-            // height: MediaQuery.of(context).size.height * (0.6),
-            // width: MediaQuery.of(context).size.width * (1),
-            // height: 500,
-            // width: 90,
-            child: widget.videoFile == null
-                ? Icon(
-                    Icons.video_collection,
-                    size: 120,
+                children: <Widget>[
+                Container(
+                   child: Padding( padding: EdgeInsets.fromLTRB(60, 50, 60, 30),
+                     child: widget.videoFile == null ?
+                     Icon( Icons.video_collection, size: 120,)
+                     : VideoWidget(widget.videoFile),
+                  ),),
+                Container(
+                  child:Padding(
+                    padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                    child: SizedBox(
+                      child: RaisedButton(
+                        shape: StadiumBorder(),
+                        onPressed: () {sendVideo();},
+                        child: Text('Next ...'),
+                        color: Theme.of(context).primaryColor,
+                        textColor: Colors.white,
+            ),),
                   )
-                : VideoWidget(widget.videoFile),
-          ),
-          Container(
-            color: Colors.blueAccent,
-              child: Padding(
-                padding: EdgeInsets.all(40.0),
-            child: RaisedButton(
-              onPressed: () {sendVideo();},
-              child: Text('Next ...'),
-              shape: StadiumBorder(),
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
-            ),
-          ))
+          // )
+                )
         ],
       ))),
     );

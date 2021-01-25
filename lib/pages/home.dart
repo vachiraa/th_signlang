@@ -13,11 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  // File fileMedia;
-  // MediaSource source;
   File videoFile;
-
-  // VideoPlayerController controller = VideoPlayerController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -31,39 +28,52 @@ class HomePageState extends State<HomePage> {
           child: Column(
               children: <Widget>[
 
-                ClipRRect(
+                Container(
+                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 140, 10, 10),
+                  child: ClipRRect(
                     child: Image.asset(
                       'lib/assets/logo04.jpeg',
-                      width: 180.0,
-                      height: 180.0,
+                      width: 160.0,
+                      height: 160.0,
                     ),
                     borderRadius: BorderRadius.circular(35.0),
-                  ),
+                  ),),),
                 Container(
-                  child: Text('THAI SIGN LANGUAGE TRANSLATION',
-                    style: TextStyle(color: Colors.white),),),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 25),
+                    child: Text('''THAI SIGN LANGUAGE 
+       TRANSLATION''',
+                    style: TextStyle(color: Colors.white, fontSize: 18),),),),
                 Container(
-                  child: RaisedButton(
-                      child: Text('Camera',),
-                    shape: StadiumBorder(),
-                    onPressed: () {
-                      videoMedia();
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                    child: SizedBox(
+                      width: 150.0,
+                      height: 50.0,
+                      child: RaisedButton(
+                        child: Text('Camera', style: TextStyle(fontSize: 23),),
+                      shape: StadiumBorder(),
+                      onPressed: () {videoMedia();},
+                      color: Theme.of(context).primaryColor,
+                      textColor: Colors.white,
+                  ),),),),
+                Container(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+                  child: SizedBox(
+                    width: 150.0,
+                    height: 50.0,
+                    child: RaisedButton(
+                      child: Text('Gallery', style: TextStyle(fontSize: 23)),
+                      shape: StadiumBorder(),
+                      onPressed: () {
+                      galleryMedia();
                     },
                     color: Theme.of(context).primaryColor,
                     textColor: Colors.white,
-                  ),),
-                Container(
-                  child: RaisedButton(
-                    child: Text('Gallery'),
-                    shape: StadiumBorder(),
-                    onPressed: () {
-                      galleryMedia();
-                    },
-                    color: Theme
-                        .of(context)
-                        .primaryColor,
-                    textColor: Colors.white,
-                  ),),
+                    padding: EdgeInsets.fromLTRB(35, 10, 35, 10),
+                  ),),),),
               ],
           ),
           ),

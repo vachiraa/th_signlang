@@ -17,6 +17,7 @@ class VideoWidgetState extends State<VideoWidget> {
   VideoPlayerController _controller;
   bool _isPlaying = false;
 
+
   Widget videoStatusAnimation;
 
   @override
@@ -28,6 +29,7 @@ class VideoWidgetState extends State<VideoWidget> {
     _controller = VideoPlayerController.file(widget.file)
       ..addListener(() {
         final bool isPlaying = _controller.value.isPlaying;
+
         if (isPlaying != _isPlaying) {
           setState(() {
             _isPlaying = isPlaying;
@@ -40,6 +42,7 @@ class VideoWidgetState extends State<VideoWidget> {
 
           setState(() {});
           _controller.play();
+          _controller.setLooping(true);
         });
       });
   }
@@ -141,8 +144,8 @@ class _FadeAnimationState extends State<FadeAnimation>
   @override
   Widget build(BuildContext context) => animationController.isAnimating
       ? Opacity(
-    opacity: 1.0 - animationController.value,
-    child: widget.child,
+        opacity: 1.0 - animationController.value,
+        child: widget.child,
   )
       : Container();
 }

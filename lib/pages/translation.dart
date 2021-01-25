@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:th_signlang/pages/home.dart';
 import 'package:th_signlang/widget/video_widget.dart';
 
 class TranslationPage extends StatefulWidget {
@@ -17,7 +19,14 @@ class _TranslationPageState extends State<TranslationPage> {
     return Scaffold(
         backgroundColor: Color.fromRGBO(54, 54, 54, 100),
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Translation'),
+        automaticallyImplyLeading: true,
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
+        ),
         // backgroundColor: Color.fromRGBO(251, 188, 27, 100),
       ),
       body: SafeArea(
@@ -27,13 +36,22 @@ class _TranslationPageState extends State<TranslationPage> {
               Container(
 
                 child: Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.fromLTRB(40, 10, 40, 15),
                 child: widget.videoFile == null ? Icon(Icons.video_collection,size: 120,)
                 :VideoWidget((widget.videoFile)),
     ) ),
               Container(
-
-                child: Text('hihihihi'),
+                child: Center(
+                   child: SizedBox(
+                      width: 320.0,
+                      height: 60.0,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),),
+                          color: Colors.deepOrange,
+                          child: Center(child: Text('Hello World!', style: TextStyle(color: Colors.white,fontSize: 23,fontWeight: FontWeight.bold,))),),
+                    )
+                )
               )
             ],
           ),
@@ -42,13 +60,4 @@ class _TranslationPageState extends State<TranslationPage> {
       );
   }
 
-  // Future videoResult(MediaSource source) async {
-  //   setState(() {
-  //     this.source = source;
-  //     this.fileMedia = null;
-  //   });
-  //
-  //   Navigator.of(context).pop(source);
-  //
-  // }
 }
