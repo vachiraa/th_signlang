@@ -30,7 +30,7 @@ class HomePageState extends State<HomePage> {
 
                 Container(
                   child: Padding(
-                      padding: EdgeInsets.fromLTRB(10, 140, 10, 10),
+                      padding: EdgeInsets.fromLTRB(10, 130, 10, 10),
                   child: ClipRRect(
                     child: Image.asset(
                       'lib/assets/logo04.jpeg',
@@ -41,7 +41,7 @@ class HomePageState extends State<HomePage> {
                   ),),),
                 Container(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 25),
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 45),
                     child: Text('''THAI SIGN LANGUAGE 
        TRANSLATION''',
                     style: TextStyle(color: Colors.white, fontSize: 18),),),),

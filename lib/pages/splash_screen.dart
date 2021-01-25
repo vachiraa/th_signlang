@@ -1,60 +1,65 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:th_signlang/pages/home.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => new _SplashScreenState();
 }
-// class _SplashScreenState extends State<SplashScreen>{
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Image.asset('assets/logo.png')
-//       ),
-//     );
-//   }
-// }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 2), () =>
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => HomePage())));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: Container(
-      child: new Text(
-        'Welcome In SplashScreen',
-        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-      ),
-      // seconds: 8,
-      // navigateAfterSeconds: AfterSplash(),
-      // image: new Image.asset(
-      //     'assets/loading.gif'),
-      // backgroundColor: Colors.black,
-      // styleTextUnderTheLoader: new TextStyle(),
-      // photoSize: 150.0,
-      // onClick: () => print("Flutter Egypt"),
-      // loaderColor: Colors.white,
-      )
-    );
+    return Scaffold(
+      // backgroundColor: Color.fromRGBO(54, 54, 54, 100),
+        body: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(color: Colors.black87),
+              ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+             Expanded(
+               flex: 2,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 300.0),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15.0),
+                            
+                            // child: Card(
+                            //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0),),
+                              child: Image.asset('lib/assets/logo5.png',
+                                width: MediaQuery.of(context).size.width * 0.38,
+                                fit: BoxFit.cover,
+                              ),
+                            // ),
+                          ),
+                        ),
+                    ],
+                    ),),
+    ),
+
+    ],
+
+    )
+    ],
+    ));
   }
 }
-//
-// class AfterSplash extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       appBar: new AppBar(
-//         backgroundColor: Colors.black,
-//         title: new Text("Welcome In SplashScreen Package"),
-//         automaticallyImplyLeading: false,
-//       ),
-//       body: new Center(
-//         child: new Text(
-//           "Succeeded!",
-//           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
-//         ),
-//       ),
-//     );
-//   }
-// }

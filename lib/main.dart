@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:th_signlang/pages/home.dart';
+import 'package:th_signlang/pages/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     // title: title,
     theme: ThemeData(primarySwatch: Colors.deepOrange),
-    home: HomePage(),
+    home: SplashScreen(),
     debugShowCheckedModeBanner: false,
   );
 }

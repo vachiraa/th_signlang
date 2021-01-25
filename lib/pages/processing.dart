@@ -39,14 +39,14 @@ class _ProcessingPageState extends State<ProcessingPage> {
               child: ListView(
                 children: <Widget>[
                 Container(
-                   child: Padding( padding: EdgeInsets.fromLTRB(60, 50, 60, 30),
+                   child: Padding( padding: EdgeInsets.fromLTRB(60, 40, 60, 20),
                      child: widget.videoFile == null ?
                      Icon( Icons.video_collection, size: 120,)
                      : VideoWidget(widget.videoFile),
                   ),),
                 Container(
                   child:Padding(
-                    padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                    padding: EdgeInsets.fromLTRB(100, 10, 100, 0),
                     child: SizedBox(
                       child: RaisedButton(
                         shape: StadiumBorder(),

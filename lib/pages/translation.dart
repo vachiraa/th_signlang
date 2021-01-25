@@ -36,7 +36,7 @@ class _TranslationPageState extends State<TranslationPage> {
               Container(
 
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(40, 10, 40, 15),
+                  padding: EdgeInsets.fromLTRB(40, 5, 40, 15),
                 child: widget.videoFile == null ? Icon(Icons.video_collection,size: 120,)
                 :VideoWidget((widget.videoFile)),
     ) ),
@@ -44,12 +44,12 @@ class _TranslationPageState extends State<TranslationPage> {
                 child: Center(
                    child: SizedBox(
                       width: 320.0,
-                      height: 60.0,
+                      height: 50.0,
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),),
                           color: Colors.deepOrange,
-                          child: Center(child: Text('Hello World!', style: TextStyle(color: Colors.white,fontSize: 23,fontWeight: FontWeight.bold,))),),
+                          child: Center(child: Text('Hello World!', style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,))),),
                     )
                 )
               )
