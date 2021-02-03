@@ -41,12 +41,11 @@ class _SplashScreenState extends State<SplashScreen> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 300.0),
                           child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15.0),
-                            
-                            // child: Card(
-                            //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0),),
-                              child: Image.asset('lib/assets/logo5.png',
-                                width: MediaQuery.of(context).size.width * 0.38,
+                              borderRadius: BorderRadius.circular(25.0),
+
+                              // child: Image.asset('lib/assets/logo5.png',
+                              child: Image.asset('lib/assets/logo04.jpeg',
+                                width: MediaQuery.of(context).size.width * 0.30,
                                 fit: BoxFit.cover,
                               ),
                             // ),
