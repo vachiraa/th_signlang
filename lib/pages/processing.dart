@@ -45,9 +45,17 @@ class _ProcessingPageState extends State<ProcessingPage> {
                      : VideoWidget(widget.videoFile),
                   ),),
                 Container(
+                    child: SizedBox(
+                      height: 10,
+                       width: 10,
+                       child: LinearProgressIndicator( backgroundColor: Colors.grey,minHeight: 4,)  ,
+                ),),
+                Container(
                   child:Padding(
                     padding: EdgeInsets.fromLTRB(100, 10, 100, 0),
                     child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width *  0.40,
                       child: RaisedButton(
                         shape: StadiumBorder(),
                         onPressed: () {sendVideo();},
@@ -72,4 +80,6 @@ class _ProcessingPageState extends State<ProcessingPage> {
       });
     }
   }
+
+
 }

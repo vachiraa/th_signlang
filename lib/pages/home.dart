@@ -34,10 +34,11 @@ class HomePageState extends State<HomePage> {
                   child: ClipRRect(
                     child: Image.asset(
                       'lib/assets/logo04.jpeg',
-                      width: 160.0,
-                      height: 160.0,
+                      // width: 160.0,
+                      // height: 160.0,
+                      width: MediaQuery.of(context).size.width *  0.35,
                     ),
-                    borderRadius: BorderRadius.circular(35.0),
+                    borderRadius: BorderRadius.circular(30.0),
                   ),),),
                 Container(
                   child: Padding(
@@ -49,8 +50,8 @@ class HomePageState extends State<HomePage> {
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
                     child: SizedBox(
-                      width: 150.0,
-                      height: 50.0,
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.of(context).size.width *  0.40,
                       child: RaisedButton(
                         child: Text('Camera', style: TextStyle(fontSize: 23),),
                       shape: StadiumBorder(),
@@ -62,8 +63,8 @@ class HomePageState extends State<HomePage> {
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
                   child: SizedBox(
-                    width: 150.0,
-                    height: 50.0,
+                    height: MediaQuery.of(context).size.height * 0.07,
+                    width: MediaQuery.of(context).size.width *  0.40,
                     child: RaisedButton(
                       child: Text('Gallery', style: TextStyle(fontSize: 23)),
                       shape: StadiumBorder(),

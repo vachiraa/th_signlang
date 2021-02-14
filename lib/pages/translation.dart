@@ -34,17 +34,18 @@ class _TranslationPageState extends State<TranslationPage> {
           child: ListView(
             children: <Widget> [
               Container(
-
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  // width: MediaQuery.of(context).size.width *  0.1,
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(40, 5, 40, 15),
+                  padding: EdgeInsets.fromLTRB(25, 10, 25, 15),
                 child: widget.videoFile == null ? Icon(Icons.video_collection,size: 120,)
                 :VideoWidget((widget.videoFile)),
     ) ),
               Container(
                 child: Center(
                    child: SizedBox(
-                      width: 320.0,
-                      height: 50.0,
+                     height: MediaQuery.of(context).size.height * 0.08,
+                     width: MediaQuery.of(context).size.width *  0.80,
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),),
