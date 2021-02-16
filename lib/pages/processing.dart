@@ -2,6 +2,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:export_video_frame/export_video_frame.dart';
+import 'package:th_signlang/pages/frames.dart';
 import 'package:th_signlang/pages/home.dart';
 import 'package:th_signlang/pages/translation.dart';
 import 'package:th_signlang/widget/video_widget.dart';
@@ -73,13 +75,15 @@ class _ProcessingPageState extends State<ProcessingPage> {
   
   Future sendVideo()async{
     final getVideo = widget.videoFile;
+    var images = await ExportVideoFrame.exportImage(getVideo.path,10,0);
+    var result = images.map((file) => Image.file(file)).toList();
     if(getVideo != null){
       setState(() {
         video = getVideo;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => TranslationPage(videoFile: video,)));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => TranslationPage(videoFile: video,)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => FramesPage( videoFile: video,)));
       });
     }
   }
-
 
 }
