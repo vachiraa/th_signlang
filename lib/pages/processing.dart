@@ -11,15 +11,48 @@ import 'package:th_signlang/widget/video_widget.dart';
 class ProcessingPage extends StatefulWidget {
   final File videoFile;
   final bool looping;
+  final List<Image> frames;
 
-  ProcessingPage({Key key, this.videoFile,this.looping}) : super(key: key);
+  ProcessingPage({Key key, this.videoFile,this.looping,this.frames}) : super(key: key);
 
   @override
   _ProcessingPageState createState() => _ProcessingPageState();
 }
 
+class ImageItem extends StatelessWidget {
+  ImageItem({this.image}) : super(key: ObjectKey(image));
+  final Image image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: image
+    );
+  }
+}
+
 class _ProcessingPageState extends State<ProcessingPage> {
   var video;
+
+  Future sendVideo()async{
+    final getVideo = widget.videoFile;
+    if(getVideo != null){
+      setState(() {
+        video = getVideo;
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => TranslationPage(videoFile: video,)));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => FramesPage( videoFile: video,)));
+      });
+    }
+  }
+
+  Future getFrames() async {
+    // var file = widget.videoFile;
+    var images = await ExportVideoFrame.exportImage(widget.videoFile.path,14,0);
+    var result = images.map((file) => Image.file(file)).toList();
+    setState(() {
+      widget.frames.addAll(result);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +73,20 @@ class _ProcessingPageState extends State<ProcessingPage> {
           child: Center(
               child: ListView(
                 children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child:
+                    GridView.extent(
+                        maxCrossAxisExtent: 400,
+                        childAspectRatio: 1.0,
+                        padding: const EdgeInsets.all(4),
+                        mainAxisSpacing: 1,
+                        crossAxisSpacing: 1,
+                        children:  widget.frames.length > 0 ?  widget.frames.map((image) => ImageItem(image:image)).toList()  : [Container()]
+                        
+
+                    ),
+                  ),
                 Container(
                    child: Padding( padding: EdgeInsets.fromLTRB(60, 40, 60, 20),
                      child: widget.videoFile == null ?
@@ -67,23 +114,11 @@ class _ProcessingPageState extends State<ProcessingPage> {
             ),),
                   )
           // )
-                )
+                ),
         ],
       ))),
     );
   }
-  
-  Future sendVideo()async{
-    final getVideo = widget.videoFile;
-    var images = await ExportVideoFrame.exportImage(getVideo.path,10,0);
-    var result = images.map((file) => Image.file(file)).toList();
-    if(getVideo != null){
-      setState(() {
-        video = getVideo;
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => TranslationPage(videoFile: video,)));
-        Navigator.push(context, MaterialPageRoute(builder: (context) => FramesPage( videoFile: video,)));
-      });
-    }
-  }
+
 
 }
