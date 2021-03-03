@@ -11,9 +11,9 @@ import 'package:th_signlang/widget/video_widget.dart';
 class ProcessingPage extends StatefulWidget {
   final File videoFile;
   final bool looping;
-  final List<Image> frames;
+  final List<Image> frames = [];
 
-  ProcessingPage({Key key, this.videoFile,this.looping,this.frames}) : super(key: key);
+  ProcessingPage({Key key, this.videoFile,this.looping}) : super(key: key);
 
   @override
   _ProcessingPageState createState() => _ProcessingPageState();
@@ -33,6 +33,7 @@ class ImageItem extends StatelessWidget {
 
 class _ProcessingPageState extends State<ProcessingPage> {
   var video;
+
 
   Future sendVideo()async{
     final getVideo = widget.videoFile;
