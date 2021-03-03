@@ -11,7 +11,7 @@ import 'package:th_signlang/widget/video_widget.dart';
 class ProcessingPage extends StatefulWidget {
   final File videoFile;
   final bool looping;
-  final List<Image> frames = [];
+  final List<Image> frames = []; //
 
   ProcessingPage({Key key, this.videoFile,this.looping}) : super(key: key);
 
