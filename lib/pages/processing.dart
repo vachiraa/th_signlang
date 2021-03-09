@@ -1,9 +1,6 @@
 // import 'dart:async';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-// import 'package:export_video_frame/export_video_frame.dart';
-import 'package:th_signlang/pages/frames.dart';
 import 'package:th_signlang/pages/home.dart';
 import 'package:th_signlang/pages/translation.dart';
 import 'package:th_signlang/widget/video_widget.dart';
@@ -45,15 +42,6 @@ class _ProcessingPageState extends State<ProcessingPage> {
       });
     }
   }
-
-  // Future getFrames() async {
-  //   var file = widget.videoFile;
-  //   var images = await ExportVideoFrame.exportImage(file.path,14,0);
-  //   var result = images.map((file) => Image.file(file)).toList();
-  //   setState(() {
-  //     widget.frames.addAll(result);
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
