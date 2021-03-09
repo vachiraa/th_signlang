@@ -2,7 +2,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:export_video_frame/export_video_frame.dart';
+// import 'package:export_video_frame/export_video_frame.dart';
 import 'package:th_signlang/pages/frames.dart';
 import 'package:th_signlang/pages/home.dart';
 import 'package:th_signlang/pages/translation.dart';
@@ -11,7 +11,7 @@ import 'package:th_signlang/widget/video_widget.dart';
 class ProcessingPage extends StatefulWidget {
   final File videoFile;
   final bool looping;
-  final List<Image> frames = []; //
+  final List<Image> frames = [];
 
   ProcessingPage({Key key, this.videoFile,this.looping}) : super(key: key);
 
@@ -40,20 +40,20 @@ class _ProcessingPageState extends State<ProcessingPage> {
     if(getVideo != null){
       setState(() {
         video = getVideo;
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => TranslationPage(videoFile: video,)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => TranslationPage(videoFile: video,)));
         // Navigator.push(context, MaterialPageRoute(builder: (context) => FramesPage( videoFile: video,)));
       });
     }
   }
 
-  Future getFrames() async {
-    // var file = widget.videoFile;
-    var images = await ExportVideoFrame.exportImage(widget.videoFile.path,14,0);
-    var result = images.map((file) => Image.file(file)).toList();
-    setState(() {
-      widget.frames.addAll(result);
-    });
-  }
+  // Future getFrames() async {
+  //   var file = widget.videoFile;
+  //   var images = await ExportVideoFrame.exportImage(file.path,14,0);
+  //   var result = images.map((file) => Image.file(file)).toList();
+  //   setState(() {
+  //     widget.frames.addAll(result);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -74,20 +74,17 @@ class _ProcessingPageState extends State<ProcessingPage> {
           child: Center(
               child: ListView(
                 children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child:
-                    GridView.extent(
-                        maxCrossAxisExtent: 400,
-                        childAspectRatio: 1.0,
-                        padding: const EdgeInsets.all(4),
-                        mainAxisSpacing: 1,
-                        crossAxisSpacing: 1,
-                        children:  widget.frames.length > 0 ?  widget.frames.map((image) => ImageItem(image:image)).toList()  : [Container()]
-                        
-
-                    ),
-                  ),
+                  // Container(
+                  //   child: Padding(
+                  //       padding: const EdgeInsets.all(4),
+                  //       mainAxisSpacing: 1,
+                  //       crossAxisSpacing: 1,
+                  //       children:  widget.frames.length > 0 ?  widget.frames.map((image) => ImageItem(image:image)).toList()  : [Container()]
+                  //   ),
+                  //
+                  //
+                  //
+                  //   ),
                 Container(
                    child: Padding( padding: EdgeInsets.fromLTRB(60, 40, 60, 20),
                      child: widget.videoFile == null ?

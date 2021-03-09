@@ -37,7 +37,7 @@ class _TranslationPageState extends State<TranslationPage> {
                   height: MediaQuery.of(context).size.height * 0.8,
                   // width: MediaQuery.of(context).size.width *  0.1,
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(25, 10, 25, 15),
+                  padding: EdgeInsets.fromLTRB(25, 10, 25, 10),
                 child: widget.videoFile == null ? Icon(Icons.video_collection,size: 120,)
                 :VideoWidget((widget.videoFile)),
     ) ),
@@ -50,7 +50,7 @@ class _TranslationPageState extends State<TranslationPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),),
                           color: Colors.deepOrange,
-                          child: Center(child: Text('Hello World!', style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,))),),
+                          child: Center(child: Text('ขอบคุณ', style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,))),),
                     )
                 )
               )

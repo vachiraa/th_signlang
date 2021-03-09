@@ -14,7 +14,9 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   File videoFile;
-  
+  final _picker = ImagePicker();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,24 +85,25 @@ class HomePageState extends State<HomePage> {
   }
 
   Future videoMedia() async {
-    final getVideo = await ImagePicker.pickVideo(
-        source: ImageSource.camera); // final getMedia = ImagePicker().getVideo;
+    final getVideo = await _picker.getVideo(source: ImageSource.camera);
+    final File file = File(getVideo.path);
 
-    if (getVideo != null) {
+    if (file != null) {
       setState(() {
-        videoFile = getVideo;
+        videoFile = file;
         Navigator.push(context, MaterialPageRoute(
-            builder: (context) => ProcessingPage(videoFile: videoFile)));
+            builder: (context) => ProcessingPage(videoFile: file)));
       });
     }
   }
 
   Future galleryMedia() async {
-    File getVideo = await ImagePicker.pickVideo(source: ImageSource.gallery);
+    final getVideo = await _picker.getVideo(source: ImageSource.gallery);
+    final File file = File(getVideo.path);
 
-    if (getVideo != null) {
+    if (file != null) {
       setState(() {
-        videoFile = getVideo;
+        videoFile = file;
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => ProcessingPage(videoFile: videoFile,)));
       });
