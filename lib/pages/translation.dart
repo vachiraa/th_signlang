@@ -1,7 +1,11 @@
+import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:th_signlang/pages/home.dart';
+import 'package:http/http.dart' as http;
 import 'package:th_signlang/widget/video_widget.dart';
 
 class TranslationPage extends StatefulWidget {
@@ -34,10 +38,12 @@ class _TranslationPageState extends State<TranslationPage> {
           child: ListView(
             children: <Widget> [
               Container(
+        ),
+              Container(
                   height: MediaQuery.of(context).size.height * 0.8,
                   // width: MediaQuery.of(context).size.width *  0.1,
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(25, 10, 25, 10),
+                  padding: EdgeInsets.fromLTRB(28, 10, 28, 10),
                 child: widget.videoFile == null ? Icon(Icons.video_collection,size: 120,)
                 :VideoWidget((widget.videoFile)),
     ) ),
