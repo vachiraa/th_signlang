@@ -57,14 +57,17 @@ class _ProcessingPageState extends State<ProcessingPage> {
     print("File.toString(): ${file.toString()}");
     // final response = await http.post(
     //   Uri.http('192.46.230.251:8000', 'upload'),
-    //   body: {'file': file.readAsBytesSync()},
+    //   // headers:{ "Content-Type":"multipart/form-data" } ,
+    //   body: {'file': file.readAsBytes()},
     //   encoding: Encoding.getByName("utf-8"),
     // );
 
     var request = http.MultipartRequest("POST", Uri.parse('http://192.46.230.251:8000/upload'));
     print("init request");
 
-    var multipartFile = http.MultipartFile.fromBytes('file', await file.readAsBytes());
+    var multipartFile = await http.MultipartFile.fromPath('file', file.path);
+    // var multipartFile = http.MultipartFile.fromBytes('file', await file.readAsBytes());
+
     print("init multipartFile");
 
     request.files.add(multipartFile);
@@ -73,7 +76,8 @@ class _ProcessingPageState extends State<ProcessingPage> {
     var response = await request.send();
     print("request sent");
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
+      print("yippee");
       print(response.statusCode);
     } else {
       print(response.statusCode);
