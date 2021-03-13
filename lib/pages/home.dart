@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -9,14 +10,42 @@ import 'package:th_signlang/pages/processing.dart';
 
 class HomePage extends StatefulWidget {
   @override
-  HomePageState createState() => HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class HomePageState extends State<HomePage> {
-  File videoFile;
+class _HomePageState extends State<HomePage> {
+  // File videoFile;
   final _picker = ImagePicker();
 
 
+  Future videoMedia() async {
+    final getVideo = await _picker.getVideo(source: ImageSource.camera);
+    final File file = File(getVideo.path);
+
+    if (file != null) {
+      setState(() {
+        // videoFile = file;
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProcessingPage(videoFile: file,)
+
+      )
+        );
+      });
+    }
+  }
+
+  Future galleryMedia() async {
+    final getVideo = await _picker.getVideo(source: ImageSource.gallery);
+    final File file = File(getVideo.path);
+
+    if (file != null) {
+      setState(() {
+        // videoFile = file;
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ProcessingPage(videoFile: file,)
+        ));
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,31 +113,7 @@ class HomePageState extends State<HomePage> {
       );
   }
 
-  Future videoMedia() async {
-    final getVideo = await _picker.getVideo(source: ImageSource.camera);
-    final File file = File(getVideo.path);
 
-    if (file != null) {
-      setState(() {
-        videoFile = file;
-        Navigator.push(context, MaterialPageRoute(
-            builder: (context) => ProcessingPage(videoFile: file)));
-      });
-    }
-  }
-
-  Future galleryMedia() async {
-    final getVideo = await _picker.getVideo(source: ImageSource.gallery);
-    final File file = File(getVideo.path);
-
-    if (file != null) {
-      setState(() {
-        videoFile = file;
-        Navigator.push(context, MaterialPageRoute(
-            builder: (context) => ProcessingPage(videoFile: videoFile,)));
-      });
-    }
-  }
 
 
 }

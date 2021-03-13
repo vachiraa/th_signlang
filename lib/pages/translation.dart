@@ -18,6 +18,19 @@ class TranslationPage extends StatefulWidget {
 
 class _TranslationPageState extends State<TranslationPage> {
 
+  // getString() async{
+  //   Map<String, dynamic> res = jsonDecode(jsonString);
+  //   print('${res['result']}!');
+  //
+  //   if (response.statusCode == 200) {
+  //     print("yippee");
+  //     print(response.statusCode);
+  //   } else {
+  //     print(response.statusCode);
+  //     throw Exception('Failed');
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +69,7 @@ class _TranslationPageState extends State<TranslationPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),),
                           color: Colors.deepOrange,
-                          child: Center(child: Text('ขอบคุณ', style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,))),),
+                          child: Center(child: Text('ขอบคุณ', style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold,))),),
                     )
                 )
               )

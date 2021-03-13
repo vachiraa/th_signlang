@@ -32,8 +32,8 @@ class ImageItem extends StatelessWidget {
 
 class _ProcessingPageState extends State<ProcessingPage> {
   var video;
-  final TextEditingController _controller = TextEditingController();
-  String uriAPI = 'http://192.46.230.251:8000/upload';
+  // final TextEditingController _controller = TextEditingController();
+  // String uriAPI = 'http://192.46.230.251:8000/upload';
 
   Future sendVideo() async {
     final getVideo = widget.videoFile;
@@ -62,7 +62,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
     //   encoding: Encoding.getByName("utf-8"),
     // );
 
-    var request = http.MultipartRequest("POST", Uri.parse('http://192.46.230.251:8000/upload'));
+    var request = http.MultipartRequest("POST", Uri.parse('http://192.46.230.251:8000/test'));
     print("init request");
 
     var multipartFile = await http.MultipartFile.fromPath('file', file.path);
@@ -75,14 +75,23 @@ class _ProcessingPageState extends State<ProcessingPage> {
 
     var response = await request.send();
     print("request sent");
+    var output = await response.stream.bytesToString();
+    print(" response.stream");
 
     if (response.statusCode == 200) {
-      print("yippee");
       print(response.statusCode);
+      print("yippee");
+      Map<String, dynamic> result_json = jsonDecode(output);
+      print(result_json['result']);
     } else {
       print(response.statusCode);
       throw Exception('Failed');
     }
+
+    // Map resMap = jsonDecode(jsonString);
+    // var res =
+    // print('${res['result']}!');
+
   }
 
   @override
@@ -108,7 +117,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
         children: <Widget>[
                 Container(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(60, 40, 60, 20),
+                    padding: EdgeInsets.fromLTRB(60, 20, 60, 20),
                     child: widget.videoFile == null
                   ? Icon(
                       Icons.video_collection,
@@ -127,7 +136,14 @@ class _ProcessingPageState extends State<ProcessingPage> {
           //     ),
           //   ),
           // ),
-
+                FutureBuilder(
+                  // future: postVideo(),
+                  builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                    if(snapshot == ConnectionState.done) {
+                      return Text(snapshot.data);
+                    }
+                    return CircularProgressIndicator();
+                  },),
                 Container(
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(100, 10, 100, 0),
