@@ -68,14 +68,14 @@ class _HomePageState extends State<HomePage> {
                       // height: 160.0,
                       width: MediaQuery.of(context).size.width *  0.35,
                     ),
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(26.0),
                   ),),),
                 Container(
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 45),
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 48),
                     child: Text('''THAI SIGN LANGUAGE 
        TRANSLATION''',
-                    style: TextStyle(color: Colors.white, fontSize: 18),),),),
+                    style: TextStyle(color: Colors.white, fontSize: 20),),),),
                 Container(
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 15),
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                       height: MediaQuery.of(context).size.height * 0.07,
                       width: MediaQuery.of(context).size.width *  0.40,
                       child: RaisedButton(
-                        child: Text('Camera', style: TextStyle(fontSize: 23),),
+                        child: Text('Camera', style: TextStyle(fontSize: 24),),
                       shape: StadiumBorder(),
                       onPressed: () {videoMedia();},
                       color: Theme.of(context).primaryColor,
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                     height: MediaQuery.of(context).size.height * 0.07,
                     width: MediaQuery.of(context).size.width *  0.40,
                     child: RaisedButton(
-                      child: Text('Gallery', style: TextStyle(fontSize: 23)),
+                      child: Text('Gallery', style: TextStyle(fontSize: 24)),
                       shape: StadiumBorder(),
                       onPressed: () {
                       galleryMedia();

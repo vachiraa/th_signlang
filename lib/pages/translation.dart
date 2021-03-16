@@ -52,27 +52,27 @@ class _TranslationPageState extends State<TranslationPage> {
           child: ListView(
             children: <Widget> [
               Container(
-        ),
-              Container(
-                  height: MediaQuery.of(context).size.height * 0.8,
+                margin: EdgeInsets.all(7.0),
+                  height: MediaQuery.of(context).size.height * 0.75,
                   // width: MediaQuery.of(context).size.width *  0.1,
                 child: Center(
-                  // padding: EdgeInsets.fromLTRB(28, 10, 28, 10),
+                  // padding: EdgeInsets.fromLTRB(28, 0, 0, 10),
                   heightFactor: 0.5,
                   widthFactor: 0.5,
                   child: widget.videoFile == null ? Icon(Icons.video_collection,size: 120,)
                 :VideoWidget((widget.videoFile)),
     ) ),
               Container(
+                margin: EdgeInsets.all(5.0),
                 child: Center(
                    child: SizedBox(
-                     height: MediaQuery.of(context).size.height * 0.08,
+                     height: MediaQuery.of(context).size.height * 0.1,
                      width: MediaQuery.of(context).size.width *  0.80,
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),),
                           color: Colors.deepOrange,
-                          child: Center(child: Text(widget.res, style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold,))),),
+                          child: Center(child: Text(widget.res, style: TextStyle(color: Colors.white,fontSize: 35,fontWeight: FontWeight.bold,))),),
                     )
                 )
               ),

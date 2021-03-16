@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:th_signlang/pages/home.dart';
 import 'package:http/http.dart' as http;
@@ -24,14 +25,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
   var video;
   String result;
   bool showButton = true;
-  // TextEditingController textFieldController = TextEditingController();
   // String uriAPI = 'http://192.46.230.251:8000/upload';
-
-  void hideButton() {
-    setState(() {
-      showButton = !showButton;
-    });
-  }
 
   Future sendVideo() async {
     final getVideo = widget.videoFile;
@@ -40,7 +34,6 @@ class _ProcessingPageState extends State<ProcessingPage> {
         video = getVideo;
         Navigator.push(context,
             MaterialPageRoute(builder: (context) {
-                  print("kat kat");
                   // postVideo(video);
                   return TranslationPage(videoFile: video,res: result);
                 }
@@ -118,50 +111,64 @@ class _ProcessingPageState extends State<ProcessingPage> {
               child: ListView(
                 children: <Widget>[
                 Container(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(80, 20, 80, 25),
+                  margin: EdgeInsets.all(40.0),
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child:Center(
+                    // padding: EdgeInsets.fromLTRB(80, 20, 80, 25),
+                    heightFactor: 0.1,
+                    widthFactor: 0.1,
                     child: widget.videoFile == null
                   ? Icon(
                       Icons.video_collection,
                       size: 120,
                     )
                   : VideoWidget(widget.videoFile),
-            ),
           ),
-          //       Container(
-          //         child: SizedBox(
-          //           height: 10,
-          //            width: 10,
-          //           child: LinearProgressIndicator(
-          //             backgroundColor: Colors.grey,
-          //             minHeight: 4,
-          //     ),
-          //   ),
-          // ),
+          ),
+                Container(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text("L O A D I N G  .  .  . ", style: TextStyle(color: Colors.white,fontSize: 20),),
+                      ),
+                      SizedBox(
+                          // height: 25.0,
+                          // width: 25.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(24.0),
+                            child: LinearProgressIndicator(
+                                backgroundColor: Colors.grey,
+                              minHeight: 10.0,
+                            ),
+                          )
+                      ),
+                    ],
+                  ),
+                ),
                 
 
                 // --------------------- button for go to next page
-                Container(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(100, 10, 100, 0),
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: MediaQuery.of(context).size.width * 0.40,
-                        child: RaisedButton(
-                          shape: StadiumBorder(),
-                          onPressed: () {
-                            postVideo(widget.videoFile).whenCompleted({
-                              sendVideo()});
-                            },
-                          child: Text('Upload'),
-                          color: Theme.of(context).primaryColor,
-                          textColor: Colors.white,
-                        )
+                // Container(
+                //     child: Padding(
+                //       padding: EdgeInsets.fromLTRB(100, 10, 100, 0),
+                //       child: SizedBox(
+                //         height: MediaQuery.of(context).size.height * 0.06,
+                //         width: MediaQuery.of(context).size.width * 0.40,
+                //         child: RaisedButton(
+                //           shape: StadiumBorder(),
+                //           onPressed: () {
+                //             postVideo(widget.videoFile).whenCompleted({
+                //               sendVideo()});
+                //             },
+                //           child: Text('Upload'),
+                //           color: Theme.of(context).primaryColor,
+                //           textColor: Colors.white,
+                //         )
+                //       ),
+                //     )
+                // ),
 
-                      ),
-                    )
-              // )
-                ),
         ],
       ))),
     );
