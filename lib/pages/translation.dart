@@ -10,14 +10,15 @@ import 'package:th_signlang/widget/video_widget.dart';
 
 class TranslationPage extends StatefulWidget {
   final File videoFile;
-  TranslationPage({Key key, this.videoFile}) : super(key: key);
+  final String res;
+  TranslationPage({Key key, this.videoFile,this.res}) : super(key: key);
 
   @override
   _TranslationPageState createState() => _TranslationPageState();
 }
 
 class _TranslationPageState extends State<TranslationPage> {
-
+  String word;
   // getString() async{
   //   Map<String, dynamic> res = jsonDecode(jsonString);
   //   print('${res['result']}!');
@@ -69,10 +70,10 @@ class _TranslationPageState extends State<TranslationPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),),
                           color: Colors.deepOrange,
-                          child: Center(child: Text('ขอบคุณ', style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold,))),),
+                          child: Center(child: Text(word, style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold,))),),
                     )
                 )
-              )
+              ),
             ],
           ),
         ),

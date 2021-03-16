@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 
-import 'package:th_signlang/model/media_source.dart';
 import 'package:th_signlang/pages/processing.dart';
 
 class HomePage extends StatefulWidget {
