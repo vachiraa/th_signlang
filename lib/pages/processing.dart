@@ -40,7 +40,8 @@ class _ProcessingPageState extends State<ProcessingPage> {
         video = getVideo;
         Navigator.push(context,
             MaterialPageRoute(builder: (context) {
-                  postVideo(video);
+                  print("kat kat");
+                  // postVideo(video);
                   return TranslationPage(videoFile: video,res: result);
                 }
             )
@@ -58,7 +59,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
     //   encoding: Encoding.getByName("utf-8"),
     // );
 
-    var request = http.MultipartRequest("POST", Uri.parse('http://192.46.230.251:8000/upload2'));
+    var request = http.MultipartRequest("POST", Uri.parse('http://192.46.230.251:8000/test'));
     print("init request");
 
     var multipartFile = await http.MultipartFile.fromPath('file', file.path);
@@ -79,7 +80,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
       Map<String, dynamic> result_json = jsonDecode(output);
       print(result_json['result']);
 
-      result = result_json['result'];
+      result = await result_json['result'];
     } else {
       print(response.statusCode);
       throw Exception('Failed');
@@ -89,7 +90,9 @@ class _ProcessingPageState extends State<ProcessingPage> {
   @override
   void initState() {
     // TODO: implement initState
-    postVideo(widget.videoFile);
+    postVideo(widget.videoFile).whenComplete((){
+      sendVideo();
+    });
     super.initState();
   }
 
@@ -147,7 +150,8 @@ class _ProcessingPageState extends State<ProcessingPage> {
                         child: RaisedButton(
                           shape: StadiumBorder(),
                           onPressed: () {
-                            sendVideo();
+                            postVideo(widget.videoFile).whenCompleted({
+                              sendVideo()});
                             },
                           child: Text('Upload'),
                           color: Theme.of(context).primaryColor,
