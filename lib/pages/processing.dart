@@ -52,7 +52,7 @@ class _ProcessingPageState extends State<ProcessingPage> {
     //   encoding: Encoding.getByName("utf-8"),
     // );
 
-    var request = http.MultipartRequest("POST", Uri.parse('http://192.46.230.251:8000/test'));
+    var request = http.MultipartRequest("POST", Uri.parse('http://192.46.230.251:8000/upload'));
     print("init request");
 
     var multipartFile = await http.MultipartFile.fromPath('file', file.path);
