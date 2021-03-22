@@ -18,19 +18,23 @@ class _HomePageState extends State<HomePage> {
 
   Future videoMedia() async {
     final getVideo = await _picker.getVideo(source: ImageSource.camera);
-    final File file = File(getVideo.path);
+    if (getVideo != null) {
+      final File file = File(getVideo.path);
 
-    if (file != null) {
-      setState(() {
-        // videoFile = file;
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ProcessingPage(
-                      videoFile: file,
-                    )));
-      });
+      if (file != null) {
+        setState(() {
+          // videoFile = file;
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ProcessingPage(
+                    videoFile: file,
+                  )));
+        });
+      }
     }
+
+
   }
 
   Future galleryMedia() async {
