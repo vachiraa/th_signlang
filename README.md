@@ -5,8 +5,7 @@
   - [Windows](https://flutter.dev/docs/get-started/install/windows)
   - [macOS](https://flutter.dev/docs/get-started/install/macos)
   
-**2. download Android Studio**
-  - [click hear](https://developer.android.com/studio) 
+[**2. download Android Studio**](https://developer.android.com/studio) 
 
 This project is a starting point for a Flutter application.
 
