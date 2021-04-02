@@ -1,6 +1,6 @@
 # th_signlang
 
-my senior project
+project name: Thai Sign Language Translation System in Mobile Application
 
 ## Getting Started
 
